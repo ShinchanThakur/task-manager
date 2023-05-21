@@ -55,3 +55,8 @@ You can delete a user from users collection using the following get request -
 You can add a new task to tasks collection using the following post request - 
 
 ![Request for adding new task](./photos-for-readme/add-task.jpg)
+
+### 7. Get all tasks
+You can get all tasks from tasks collection using the following get request - 
+
+![Request for getting all tasks](./photos-for-readme/get-all-tasks.jpg)
