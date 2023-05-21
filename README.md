@@ -70,3 +70,8 @@ You can get a task from tasks collection using the following get request -
 You can update a task from tasks collection using the following patch request - 
 
 ![Request for updating task](./photos-for-readme/update-task.jpg)
+
+### 10. Delete task
+You can delete a task from tasks collection using the following delete request - 
+
+![Request for deleting task](./photos-for-readme/delete-task.jpg)
