@@ -1,0 +1,14 @@
+{
+  "name": "task-manager",
+  "version": "1.0.0",
+  "description": "This app allows you to manage your tasks efficiently.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rohan Thakur",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^5.5.0"
+  }
+}
