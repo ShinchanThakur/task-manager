@@ -42,12 +42,12 @@ You can get a user from users collection using the following get request -
 ![Request for getting a user](./photos-for-readme/get-user.jpg)
 
 ### 4. Update user
-You can update a user from users collection using the following get request - 
+You can update a user from users collection using the following patch request - 
 
 ![Request for updating user](./photos-for-readme/update-user.jpg)
 
 ### 5. Delete user
-You can delete a user from users collection using the following get request - 
+You can delete a user from users collection using the following delete request - 
 
 ![Request for deleting user](./photos-for-readme/delete-user.jpg)
 
@@ -65,3 +65,8 @@ You can get all tasks from tasks collection using the following get request -
 You can get a task from tasks collection using the following get request - 
 
 ![Request for getting a task](./photos-for-readme/get-task.jpg)
+
+### 9. Update task
+You can update a task from tasks collection using the following patch request - 
+
+![Request for updating task](./photos-for-readme/update-task.jpg)
