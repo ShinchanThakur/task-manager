@@ -10,6 +10,7 @@ Following Node/JS topics are are the main focus in this console app -
 - CRUD operations on mongodb
 - Promises and promise chaining
 - Async/ await
+- Status codes
 
 ## Node/JS Topics covered
 
@@ -49,3 +50,8 @@ You can update a user from users collection using the following get request -
 You can delete a user from users collection using the following get request - 
 
 ![Request for deleting user](./photos-for-readme/delete-user.jpg)
+
+### 6. Add task to tasks collection
+You can add a new task to tasks collection using the following post request - 
+
+![Request for adding new task](./photos-for-readme/add-task.jpg)
