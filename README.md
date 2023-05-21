@@ -26,11 +26,5 @@ Following Node/JS topics are covered in this console app -
 Following features are available in this node app - 
 
 ### 1. Add new user to users collection
-You can add a new user to users collection using the following API - 
-
-## Config file settings
-Before running the app in your local machine, follow the following steps to setup config file - 
-
-- Copy the template_config.json file in the same folder (config folder).
-- Name the new file as config.json.
-- Replace the values with your api keys.
+You can add a new user to users collection using the following post request - 
+![Request for adding new user](./photos-for-readme/add-new-user.jpg)
