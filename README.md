@@ -60,3 +60,8 @@ You can add a new task to tasks collection using the following post request -
 You can get all tasks from tasks collection using the following get request - 
 
 ![Request for getting all tasks](./photos-for-readme/get-all-tasks.jpg)
+
+### 8. Get task
+You can get a task from tasks collection using the following get request - 
+
+![Request for getting a task](./photos-for-readme/get-task.jpg)
