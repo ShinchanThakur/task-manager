@@ -35,6 +35,28 @@ router.get('/users/:id', async (req, res) => {
     }
 });
 
+router.patch('/users/:id', async (req, res) => {
+    const id = req.params.id;
+    const updates = Object.keys(req.body);
+    const allowedUpdates = ['name', 'email', 'password', 'age'];
+    const isValidUpdate = updates.every((update) => allowedUpdates.includes(update));
+    if (!isValidUpdate) {
+        return res.status(400).send({ error: 'Invalid updates' });
+    }
+    try {
+        const user = await User.findByIdAndUpdate(id, req.body, {
+            new: true,
+            runValidators: true
+        });
+        if (!user) {
+            return res.status(404).send();
+        }
+        res.send(user);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+});
+
 router.delete('/users/:id', async (req, res) => {
     const id = req.params.id;
     try {
@@ -46,6 +68,6 @@ router.delete('/users/:id', async (req, res) => {
     } catch (error) {
         res.status(500).send(error);
     }
-})
+});
 
 module.exports = router;
