@@ -39,3 +39,8 @@ You can get all users from users collection using the following get request -
 You can get a user by id from users collection using the following get request - 
 
 ![Request for getting user by id](./photos-for-readme/get-user.jpg)
+
+### 4. Delete user by id
+You can delete a user by id from users collection using the following get request - 
+
+![Request for deleting user by id](./photos-for-readme/delete-user.jpg)
