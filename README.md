@@ -10,6 +10,7 @@ Following Node/JS topics are are the main focus in this console app -
 - CRUD operations on mongodb
 - Promises and promise chaining
 - Async/ await
+- Status codes
 
 ## Node/JS Topics covered
 
@@ -41,11 +42,36 @@ You can get a user from users collection using the following get request -
 ![Request for getting a user](./photos-for-readme/get-user.jpg)
 
 ### 4. Update user
-You can update a user from users collection using the following get request - 
+You can update a user from users collection using the following patch request - 
 
 ![Request for updating user](./photos-for-readme/update-user.jpg)
 
 ### 5. Delete user
-You can delete a user from users collection using the following get request - 
+You can delete a user from users collection using the following delete request - 
 
 ![Request for deleting user](./photos-for-readme/delete-user.jpg)
+
+### 6. Add task to tasks collection
+You can add a new task to tasks collection using the following post request - 
+
+![Request for adding new task](./photos-for-readme/add-task.jpg)
+
+### 7. Get all tasks
+You can get all tasks from tasks collection using the following get request - 
+
+![Request for getting all tasks](./photos-for-readme/get-all-tasks.jpg)
+
+### 8. Get task
+You can get a task from tasks collection using the following get request - 
+
+![Request for getting a task](./photos-for-readme/get-task.jpg)
+
+### 9. Update task
+You can update a task from tasks collection using the following patch request - 
+
+![Request for updating task](./photos-for-readme/update-task.jpg)
+
+### 10. Delete task
+You can delete a task from tasks collection using the following delete request - 
+
+![Request for deleting task](./photos-for-readme/delete-task.jpg)
