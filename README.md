@@ -27,8 +27,15 @@ Following features are available in this node app -
 
 ### 1. Add new user to users collection
 You can add a new user to users collection using the following post request - 
+
 ![Request for adding new user](./photos-for-readme/add-new-user.jpg)
 
 ### 2. Get all users
-You can get all users from users collection using the following post request - 
+You can get all users from users collection using the following get request - 
+
 ![Request for getting all users](./photos-for-readme/get-all-users.jpg)
+
+### 3. Get user by id
+You can get a user by id from users collection using the following get request - 
+
+![Request for getting user by id](./photos-for-readme/get-user.jpg)
