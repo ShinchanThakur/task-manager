@@ -12,6 +12,7 @@ Following Node/JS topics are are the main focus in this console app -
 - Async/ await
 - Status codes
 - Storing password as hash
+- Login/ logout (Authentication)
 
 ## Node/JS Topics covered
 

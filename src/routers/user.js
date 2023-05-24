@@ -13,6 +13,18 @@ router.post('/users', async (req, res) => {
     }
 });
 
+router.post('/users/login', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const user = await User.findByCredentials(email, password);
+        res.send(user);
+    } catch (error) {
+        res.status(400).send();
+        //Not sending details of error is safe here.
+        //It will protect us from hackers
+    }
+});
+
 router.get('/users', async (req, res) => {
     try {
         const users = await User.find({});
