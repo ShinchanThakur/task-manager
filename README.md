@@ -11,6 +11,7 @@ Following Node/JS topics are are the main focus in this console app -
 - Promises and promise chaining
 - Async/ await
 - Status codes
+- Storing password as hash
 
 ## Node/JS Topics covered
 
