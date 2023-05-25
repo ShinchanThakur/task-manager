@@ -1,5 +1,6 @@
 const express = require('express');
 const User = require('../models/user');
+const auth = require('../middleware/auth');
 
 const router = new express.Router();
 
@@ -25,6 +26,10 @@ router.post('/users/login', async (req, res) => {
         //Not sending details of error is safe here.
         //It will protect us from hackers
     }
+});
+
+router.get('/users/me', auth, async (req, res) => {
+    res.send(req.user);
 });
 
 router.get('/users', async (req, res) => {
