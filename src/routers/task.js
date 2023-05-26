@@ -17,9 +17,11 @@ router.post('/tasks', auth, async (req, res) => {
     }
 });
 
-router.get('/tasks', async (req, res) => {
+router.get('/tasks', auth, async (req, res) => {
     try {
-        const tasks = await Task.find({});
+        const user = req.user;
+        await user.populate('tasks');
+        const tasks = user.tasks;
         res.send(tasks);
     } catch (error) {
         res.status(500).send(error);
