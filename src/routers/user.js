@@ -1,5 +1,6 @@
 const express = require('express');
 const User = require('../models/user');
+const auth = require('../middleware/auth');
 
 const router = new express.Router();
 
@@ -7,10 +8,28 @@ router.post('/users', async (req, res) => {
     const user = new User(req.body);
     try {
         await user.save();
-        res.status(201).send(user);
+        const token = await user.generateAuthToken();
+        res.status(201).send({ user, token });
     } catch (error) {
         res.status(400).send(error);
     }
+});
+
+router.post('/users/login', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const user = await User.findByCredentials(email, password);
+        const token = await user.generateAuthToken();
+        res.send({ user, token });
+    } catch (error) {
+        res.status(400).send();
+        //Not sending details of error is safe here.
+        //It will protect us from hackers
+    }
+});
+
+router.get('/users/me', auth, async (req, res) => {
+    res.send(req.user);
 });
 
 router.get('/users', async (req, res) => {
@@ -37,20 +56,28 @@ router.get('/users/:id', async (req, res) => {
 
 router.patch('/users/:id', async (req, res) => {
     const id = req.params.id;
-    const updates = Object.keys(req.body);
-    const allowedUpdates = ['name', 'email', 'password', 'age'];
-    const isValidUpdate = updates.every((update) => allowedUpdates.includes(update));
+    const updates = req.body;
+    const updateFields = Object.keys(updates);
+    const allowedUpdateFields = ['name', 'email', 'password', 'age'];
+    const isValidUpdate = updateFields.every((updateField) => allowedUpdateFields.includes(updateField));
     if (!isValidUpdate) {
         return res.status(400).send({ error: 'Invalid updates' });
     }
     try {
-        const user = await User.findByIdAndUpdate(id, req.body, {
-            new: true,
-            runValidators: true
-        });
+        // const user = await User.findByIdAndUpdate(id, req.body, {
+        //     new: true,
+        //     runValidators: true
+        // });
+        //This won't run the pre('save') when password is changed
+        //Therefore using the below function
+        const user = await User.findById(id);
         if (!user) {
             return res.status(404).send();
         }
+        updateFields.forEach((updateField) => {
+            user[updateField] = updates[updateField];
+        });
+        await user.save();
         res.send(user);
     } catch (error) {
         res.status(400).send(error);
