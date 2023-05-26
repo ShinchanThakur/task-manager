@@ -28,6 +28,20 @@ router.post('/users/login', async (req, res) => {
     }
 });
 
+router.post('/users/logout', auth, async (req, res) => {
+    try {
+        const user = req.user;
+        const currentSessionToken = req.token;
+        user.tokens = user.tokens.filter((savedToken) => {
+            return savedToken.token !== currentSessionToken;
+        })
+        await user.save();
+        res.send();
+    } catch (error) {
+        res.status(500).send();
+    }
+});
+
 router.get('/users/me', auth, async (req, res) => {
     res.send(req.user);
 });
