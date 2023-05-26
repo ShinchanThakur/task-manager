@@ -28,6 +28,34 @@ router.post('/users/login', async (req, res) => {
     }
 });
 
+<<<<<<< HEAD
+=======
+router.post('/users/logout', auth, async (req, res) => {
+    try {
+        const user = req.user;
+        const currentSessionToken = req.token;
+        user.tokens = user.tokens.filter((savedToken) => {
+            return savedToken.token !== currentSessionToken;
+        })
+        await user.save();
+        res.send();
+    } catch (error) {
+        res.status(500).send();
+    }
+});
+
+router.post('/users/logoutAll', auth, async (req, res) => {
+    try {
+        const user = req.user;
+        user.tokens = [];
+        await user.save();
+        res.send();
+    } catch (error) {
+        res.status(500).send();
+    }
+});
+
+>>>>>>> api-authentication-and-security
 router.get('/users/me', auth, async (req, res) => {
     res.send(req.user);
 });
@@ -54,8 +82,12 @@ router.get('/users/:id', async (req, res) => {
     }
 });
 
+<<<<<<< HEAD
 router.patch('/users/:id', async (req, res) => {
     const id = req.params.id;
+=======
+router.patch('/users/me', auth, async (req, res) => {
+>>>>>>> api-authentication-and-security
     const updates = req.body;
     const updateFields = Object.keys(updates);
     const allowedUpdateFields = ['name', 'email', 'password', 'age'];
@@ -64,16 +96,7 @@ router.patch('/users/:id', async (req, res) => {
         return res.status(400).send({ error: 'Invalid updates' });
     }
     try {
-        // const user = await User.findByIdAndUpdate(id, req.body, {
-        //     new: true,
-        //     runValidators: true
-        // });
-        //This won't run the pre('save') when password is changed
-        //Therefore using the below function
-        const user = await User.findById(id);
-        if (!user) {
-            return res.status(404).send();
-        }
+        const user = req.user;
         updateFields.forEach((updateField) => {
             user[updateField] = updates[updateField];
         });
@@ -84,13 +107,10 @@ router.patch('/users/:id', async (req, res) => {
     }
 });
 
-router.delete('/users/:id', async (req, res) => {
-    const id = req.params.id;
+router.delete('/users/me', auth, async (req, res) => {
     try {
-        const user = await User.findByIdAndDelete(id);
-        if (!user) {
-            return res.status(404).send();
-        }
+        const user = req.user;
+        await User.deleteOne(user);
         res.send(user);
     } catch (error) {
         res.status(500).send(error);

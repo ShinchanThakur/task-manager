@@ -4,7 +4,7 @@ This node app provide REST APIs to perform CRUD operations on users and tasks co
 
 ## Main topics
 
-Following Node/JS topics are are the main focus in this console app - 
+Following Node/JS topics are are the main focus in this node app - 
 
 - REST APIs
 - CRUD operations on mongodb
@@ -14,9 +14,17 @@ Following Node/JS topics are are the main focus in this console app -
 - Storing password as hash
 - Login/ logout (Authentication)
 
+### Security Features
+
+Following security features are provided with this app -
+
+- Password hashing
+- Authentication using JWT (Login/ logout)
+- Data abstraction (Exposing only necessary data to the clients)
+
 ## Node/JS Topics covered
 
-Following Node/JS topics are covered in this console app - 
+Following Node/JS topics are covered in this node app - 
 
 - Importing files/npm modules
 - CLI handling
