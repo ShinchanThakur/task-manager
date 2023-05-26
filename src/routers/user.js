@@ -28,8 +28,6 @@ router.post('/users/login', async (req, res) => {
     }
 });
 
-<<<<<<< HEAD
-=======
 router.post('/users/logout', auth, async (req, res) => {
     try {
         const user = req.user;
@@ -55,7 +53,6 @@ router.post('/users/logoutAll', auth, async (req, res) => {
     }
 });
 
->>>>>>> api-authentication-and-security
 router.get('/users/me', auth, async (req, res) => {
     res.send(req.user);
 });
@@ -82,12 +79,7 @@ router.get('/users/:id', async (req, res) => {
     }
 });
 
-<<<<<<< HEAD
-router.patch('/users/:id', async (req, res) => {
-    const id = req.params.id;
-=======
 router.patch('/users/me', auth, async (req, res) => {
->>>>>>> api-authentication-and-security
     const updates = req.body;
     const updateFields = Object.keys(updates);
     const allowedUpdateFields = ['name', 'email', 'password', 'age'];
