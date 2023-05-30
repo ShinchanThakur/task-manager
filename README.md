@@ -11,8 +11,8 @@ Following Node/JS topics are are the main focus in this node app -
 - Promises and promise chaining
 - Async/ await
 - Status codes
-- Storing password as hash
-- Login/ logout (Authentication)
+- MongoDb Collection-Association
+- Sorting, Pagination and filtering
 
 ### Security Features
 
@@ -21,6 +21,7 @@ Following security features are provided with this app -
 - Password hashing
 - Authentication using JWT (Login/ logout)
 - Data abstraction (Exposing only necessary data to the clients)
+- Authorization
 
 ## Node/JS Topics covered
 
