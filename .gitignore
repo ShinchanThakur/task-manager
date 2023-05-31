@@ -3,3 +3,6 @@
 
 # Ignore config files
 config.json
+
+#Ignore example file for sometime
+/uploads
