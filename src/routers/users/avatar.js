@@ -2,13 +2,15 @@ const express = require('express');
 const auth = require('../../middleware/auth');
 const upload = require('../../middleware/upload');
 const User = require('../../models/user');
+const sharp = require('sharp');
 
 const router = new express.Router();
 
 router.post('/users/me/avatar', auth, upload.single('avatar'), async (req, res) => {
     const user = req.user;
     const buffer = req.file.buffer;
-    user.avatar = buffer;
+    const formattedBuffer = await sharp(buffer).resize({ width: 250, height: 250 }).png().toBuffer();
+    user.avatar = formattedBuffer;
     await user.save();
     res.send();
 }, (error, req, res, next) => {

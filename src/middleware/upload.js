@@ -13,6 +13,7 @@ const multer = require('multer');
 
 const limits = {
     fileSize: 1000000
+    //~1 mb limit
 };
 
 const fileFilter = function (req, file, cb) {
