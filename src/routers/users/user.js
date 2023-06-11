@@ -1,6 +1,7 @@
 const express = require('express');
 const User = require('../../models/user');
 const auth = require('../../middleware/auth');
+const { sendWelcomeEmail, sendCancellationEmail } = require('../../emails/email');
 
 const router = new express.Router();
 
@@ -9,6 +10,8 @@ router.post('/users', async (req, res) => {
     try {
         await user.save();
         const token = await user.generateAuthToken();
+        sendWelcomeEmail(user.email, user.name);
+        //sendWelcomeEmail is an async function and takes some time. But we don't need to wait for it as it is not an urgent/necessary operation
         res.status(201).send({ user, token });
     } catch (error) {
         res.status(400).send(error);
@@ -103,6 +106,8 @@ router.delete('/users/me', auth, async (req, res) => {
     try {
         const user = req.user;
         await User.deleteOne(user);
+        sendCancellationEmail(user.email, user.name);
+        //sendCancellationEmail is an async function and takes some time. But we don't need to wait for it as it is not an urgent/necessary operation
         res.send(user);
     } catch (error) {
         res.status(500).send(error);
