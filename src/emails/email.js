@@ -12,6 +12,16 @@ const sendWelcomeEmail = (email, name) => {
     });
 };
 
+const sendCancellationEmail = (email, name) => {
+    sgMail.send({
+        to: email,
+        from: config.FROM_EMAIL,
+        subject: 'Sorry to see you go!',
+        text: `Goodbye ${name}. I hope to see you back soon.`
+    })
+};
+
 module.exports = {
-    sendWelcomeEmail
-}
+    sendWelcomeEmail,
+    sendCancellationEmail
+};
