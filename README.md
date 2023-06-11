@@ -2,6 +2,15 @@
 
 This node app provide REST APIs to perform CRUD operations on users and tasks collection in mongodb.
 
+## Setup
+
+- Setup mongoDb
+- Setup SendGrid for emails
+- Setup the environment variables according to the template_dev.envv
+- Name the file dev.env
+- Run 'npm install'
+- Run 'npm run dev' for running in dev environment
+
 ## Main topics
 
 Following Node/JS topics are are the main focus in this node app - 

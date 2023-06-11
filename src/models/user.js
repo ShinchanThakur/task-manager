@@ -80,7 +80,7 @@ userSchema.methods.generateAuthToken = async function () {
     const payload = {
         _id: user._id.toString()
     }
-    const secretKey = 'someSecretKey';
+    const secretKey = process.env.JWT_SECRET;
     //take it from some config files later
     const token = jwt.sign(payload, secretKey);
     user.tokens = user.tokens.concat({ token });
