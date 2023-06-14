@@ -16,10 +16,15 @@ const userOne = {
     ]
 }
 
-const setupDatabase = async () => {
+const setupDBForUserAndAvatar = async () => {
     await User.deleteMany();
     await new User(userOne).save();
 };
+
+const setupDBForTask = async () => {
+    await User.deleteMany();
+    await new User(userOne).save();
+}
 
 const closeDBConnection = async () => {
     await mongoose.connection.close();
@@ -27,6 +32,7 @@ const closeDBConnection = async () => {
 
 module.exports = {
     userOne,
-    setupDatabase,
+    setupDBForUserAndAvatar,
+    setupDBForTask,
     closeDBConnection
 }

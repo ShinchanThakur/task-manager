@@ -1,10 +1,10 @@
 const request = require('supertest');
 const app = require('../../../src/app');
 const User = require('../../../src/models/user');
-const { userOne, setupDatabase, closeDBConnection } = require('../../fixtures/db');
+const { userOne, setupDBForUserAndAvatar, closeDBConnection } = require('../../fixtures/db');
 
 describe('User Router', () => {
-    beforeEach(setupDatabase);
+    beforeEach(setupDBForUserAndAvatar);
 
     describe('Signup', () => {
         it('should signup a new user', async () => {
