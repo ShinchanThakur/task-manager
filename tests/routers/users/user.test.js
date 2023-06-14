@@ -72,5 +72,30 @@ describe('User Router', () => {
         });
     });
 
+    describe('Update user', () => {
+        it('should update valid user fields', async () => {
+            await request(app)
+                .patch('/users/me')
+                .set('Authorization', `Bearer ${userOne.tokens[0].token}`)
+                .send({
+                    name: 'Updated Name'
+                })
+                .expect(200);
+
+            const user = await User.findById(userOne._id);
+            expect(user.name).toBe('Updated Name');
+        });
+
+        it('should not update invalid user fields', async () => {
+            await request(app)
+                .patch('/users/me')
+                .set('Authorization', `Bearer ${userOne.tokens[0].token}`)
+                .send({
+                    invalidField: 'Anything'
+                })
+                .expect(400);
+        })
+    });
+
     afterAll(closeDBConnection);
 });
