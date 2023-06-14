@@ -53,5 +53,24 @@ describe('User Router', () => {
         });
     });
 
+    describe('Get User', () => {
+        it('should get profile for user', async () => {
+            await request(app)
+                .get('/users/me')
+                .set('Authorization', `Bearer ${userOne.tokens[0].token}`)
+                .send()
+                .expect(200);
+            //Many more assertions can be made
+            //Similar to signup
+        });
+
+        it('should not get profile for unauthorized user', async () => {
+            await request(app)
+                .get('/users/me')
+                .send()
+                .expect(401);
+        });
+    });
+
     afterAll(closeDBConnection);
 });
