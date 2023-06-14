@@ -17,7 +17,7 @@ describe('Task Router', () => {
                 .post('/tasks')
                 .set('Authorization', `Bearer ${userOne.tokens[0].token}`)
                 .send({
-                    description: 'Task 1'
+                    description: 'Task 2'
                 })
                 .expect(201);
 
@@ -25,6 +25,20 @@ describe('Task Router', () => {
             const dbTask = await Task.findById(responseTask._id);
             expect(dbTask).not.toBeNull();
             expect(dbTask.completed).toBe(false);
+        });
+    });
+
+    describe('Get task', () => {
+        it('should fetch user tasks', async () => {
+            const response = await request(app)
+                .get('/tasks')
+                .set('Authorization', `Bearer ${userOne.tokens[0].token}`)
+                .send()
+                .expect(200);
+
+            const responseTasks = response.body;
+            const dbTasks = await Task.find({ owner: userOne._id });
+            expect(responseTasks.length).toBe(dbTasks.length);
         });
     });
 
