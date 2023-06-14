@@ -61,6 +61,13 @@ describe('User Router', () => {
             const responseToken = response.body.token;
             expect(responseToken).toBe(dbLatestToken);
         });
+
+        it('should not login user with wrong credentials', async () => {
+            await request(app).post('/users/login').send({
+                email: userOne.email,
+                password: 'incorrect password'
+            }).expect(400);
+        });
     });
 
     afterAll(async () => {
