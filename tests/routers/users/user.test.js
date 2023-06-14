@@ -1,27 +1,10 @@
 const request = require('supertest');
 const app = require('../../../src/app');
 const User = require('../../../src/models/user');
-const mongoose = require('mongoose');
-const jwt = require('jsonwebtoken');
-
-const userOneId = new mongoose.Types.ObjectId();
-const userOne = {
-    _id: userOneId,
-    name: 'User1',
-    email: 'user1@mail.com',
-    password: '12345678',
-    tokens: [
-        {
-            token: jwt.sign({ _id: userOneId }, process.env.JWT_SECRET)
-        }
-    ]
-}
+const { userOne, setupDatabase, closeDBConnection } = require('../../fixtures/db');
 
 describe('User Router', () => {
-    beforeEach(async () => {
-        await User.deleteMany();
-        await new User(userOne).save();
-    });
+    beforeEach(setupDatabase);
 
     describe('Signup', () => {
         it('should signup a new user', async () => {
@@ -70,7 +53,5 @@ describe('User Router', () => {
         });
     });
 
-    afterAll(async () => {
-        await mongoose.connection.close();
-    });
+    afterAll(closeDBConnection);
 });
