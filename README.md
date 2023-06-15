@@ -95,3 +95,12 @@ You can update a task from tasks collection using the following patch request -
 You can delete a task from tasks collection using the following delete request - 
 
 ![Request for deleting task](./photos-for-readme/delete-task.jpg)
+
+## To do
+1. Update readme for latest APIs
+2. Add details about testing
+3. Add details about project setup
+4. Add link of deployed app
+
+### Future additions
+1. Test all the remaining scenarios/ functions
